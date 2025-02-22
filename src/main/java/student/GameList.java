@@ -61,27 +61,34 @@ public class GameList implements IGameList {
         if (parts.length < 1 || parts.length > 2) {
             throw new IllegalArgumentException("Invalid format for addToList");
         }
-
-        if (parts.length == 1) {
+        // "all" or an index
+        else if (parts.length == 1) {
+            // "all"
             if (parts[0].equalsIgnoreCase(ADD_ALL)) {
                 listOfGames.addAll(filteredList.stream()
                         .map(BoardGame::getName)
-                        .collect(Collectors.toList()));
+                        .toList());
             } else {
+                // check if the given index out of bounds
                 try {
-                    BoardGame toAdd = filteredList.get(Integer.parseInt(parts[0]));
-                    listOfGames.add(toAdd.getName());
-                } catch (IllegalArgumentException e) {
+                    int index = Integer.parseInt(parts[0]);
+                    if (index < 1 || index > filteredList.size()) {
+                        throw new IndexOutOfBoundsException("Index out of bounds");
+                    }
+                    listOfGames.add(filteredList.get(index).getName());
+                } catch (NumberFormatException e) {
                     throw new IllegalArgumentException("Game does not exist");
                 }
             }
-        } else {
+        }
+        // range format
+        else {
             int start = Integer.parseInt(parts[0]) - 1;
             int end = Integer.parseInt(parts[1]);
             if (start >= 0 && end <= filteredList.size() && start <= end) {
                 listOfGames.addAll(filteredList.subList(start, end).stream()
                         .map(BoardGame::getName)
-                        .collect(Collectors.toList()));
+                        .toList());
             }
             else {
                 throw new IllegalArgumentException("Invalid range of games");

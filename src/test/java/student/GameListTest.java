@@ -52,6 +52,21 @@ class GameListTest {
     }
 
     @Test
+    void testAddInvalidGameToListByIndex() {
+        IGameList list1 = new GameList();
+        IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> {
+            list1.addToList("9", games.stream());
+        });
+        assertEquals("Index out of bounds", exception.getMessage());
+
+        IndexOutOfBoundsException exception2 = assertThrows(IndexOutOfBoundsException.class, () -> {
+            list1.addToList("0", games.stream());
+        });
+        assertEquals("Index out of bounds", exception2.getMessage());
+
+    }
+
+    @Test
     void testAddSingleGameToListByName() {
         IGameList list1 = new GameList();
         list1.addToList("17 days", games.stream());
