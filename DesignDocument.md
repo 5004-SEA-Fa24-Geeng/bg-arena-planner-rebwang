@@ -7,6 +7,7 @@ This document is meant to provide a tool for you to demonstrate the design proce
 ## (INITIAL DESIGN): Class Diagram 
 
 Place your class diagrams below. Make sure you check the file in the browser on github.com to make sure it is rendering correctly. If it is not, you will need to fix it. As a reminder, here is a link to tools that can help you create a class diagram: [Class Resources: Class Design Tools](https://github.com/CS5004-khoury-lionelle/Resources?tab=readme-ov-file#uml-design-tools)
+![Initial Design](img/bg_arena_initial.jpg)
 
 ### Provided Code
 
@@ -36,8 +37,12 @@ Write a test (in english) that you can picture for the class diagram you have cr
 
 You should feel free to number your brainstorm. 
 
-1. Test 1..
-2. Test 2..
+1. addToList method in GameList class can successfully add game by index 
+2. addToList method in GameList class can successfully add game by name
+3. addToList method in GameList class should throw exception if game name does not exist
+4. addToList method in GameList class can successfully add game by valid range
+5. addToList method in GameList class should throw exception if the range is invalid
+6. addToList method in GameList class can successfully add all games by passing string "all" in arg
 
 
 
