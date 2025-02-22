@@ -71,8 +71,8 @@ public class GameList implements IGameList {
             } else {
                 // check if the given index out of bounds
                 try {
-                    int index = Integer.parseInt(parts[0]);
-                    if (index < 1 || index > filteredList.size()) {
+                    int index = Integer.parseInt(parts[0]) - 1;
+                    if (index < 0 || index >= filteredList.size()) {
                         throw new IndexOutOfBoundsException("Index out of bounds");
                     }
                     listOfGames.add(filteredList.get(index).getName());
