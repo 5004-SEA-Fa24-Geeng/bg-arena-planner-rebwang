@@ -7,8 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 class GameListTest {
     public Set<BoardGame> games;
@@ -28,14 +27,26 @@ class GameListTest {
 
     @Test
     void getGameNames() {
+        IGameList list1 = new GameList();
+        list1.addToList("all", games.stream());
+        List<String> expectedList = Arrays.asList("17 days", "Chess", "Go", "Go Fish", "golang", "GoRami", "Monopoly", "Tucano");
+        assertEquals(expectedList, list1.getGameNames());
     }
 
     @Test
     void clear() {
+        IGameList list1 = new GameList();
+        list1.addToList("all", games.stream());
+        assertEquals(8, list1.count());
+        list1.clear();
+        assertEquals(0, list1.count());
     }
 
     @Test
     void count() {
+        IGameList list1 = new GameList();
+        list1.addToList("all", games.stream());
+        assertEquals(8, list1.count());
     }
 
     @Test

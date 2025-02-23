@@ -20,22 +20,18 @@ public class GameList implements IGameList {
 
     @Override
     public List<String> getGameNames() {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'getGameNames'");
-        List<String> listVersionOfGames = List.copyOf(listOfGames);
+        List<String> listVersionOfGames = new java.util.ArrayList<>(List.copyOf(listOfGames));
+        listVersionOfGames.sort(String.CASE_INSENSITIVE_ORDER);
         return listVersionOfGames;
     }
 
     @Override
     public void clear() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'clear'");
+        listOfGames.clear();
     }
 
     @Override
     public int count() {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'count'");
         return listOfGames.size();
     }
 
