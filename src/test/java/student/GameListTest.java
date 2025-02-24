@@ -6,11 +6,17 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
 class GameListTest {
     public Set<BoardGame> games;
+
+    @TempDir
+    static Path tempDir;
 
     @BeforeEach
     void setUp() {
@@ -50,7 +56,16 @@ class GameListTest {
     }
 
     @Test
-    void saveGame() {
+    void saveGame() throws IOException {
+        IGameList list1 = new GameList();
+        list1.addToList("Chess", games.stream());
+        list1.addToList("17 days", games.stream());
+        Path gameList = tempDir.resolve("games_list.txt");
+        list1.saveGame(gameList.toString());
+        assertTrue(Files.exists(gameList));
+        List<String> fileContent = Files.readAllLines(gameList);
+        List<String> expected = List.of("17 days", "Chess");
+        assertEquals(expected, fileContent);
     }
 
     @Test
@@ -99,9 +114,8 @@ class GameListTest {
         list1.addToList("1-1", games.stream());
         assertEquals(1, list1.count());
 
-        IGameList list2 = new GameList();
-        list2.addToList("2-5", games.stream());
-        assertEquals(4, list2.count());
+        list1.addToList("2-5", games.stream());
+        assertEquals(5, list1.count());
     }
 
     @Test
@@ -125,9 +139,86 @@ class GameListTest {
         System.out.println(list1.getGameNames());
     }
 
-//    @Test
-//    void removeFromList() {
-//        IGameList list1 = new GameList();
-//        list1.addToList("all", games.stream());
-//    }
+    @Test
+    void testRemoveAllGamesFromList() {
+        IGameList list1 = new GameList();
+        list1.addToList("1-5", games.stream());
+        assertEquals(5, list1.count());
+        list1.removeFromList("all");
+        assertEquals(0, list1.count());
+    }
+
+    @Test
+    void removeFromListByIndex() {
+        IGameList list1 = new GameList();
+        list1.addToList("Chess", games.stream());
+        list1.addToList("17 days", games.stream());
+        List<String> expect = List.of("17 days", "Chess");
+        assertEquals(expect, list1.getGameNames());
+        list1.removeFromList("2");
+        List<String> expect2 = List.of("17 days");
+        assertEquals(expect2, list1.getGameNames());
+    }
+
+    @Test
+    void removeFromListByInvalidIndex() {
+        IGameList list1 = new GameList();
+        list1.addToList("17 days", games.stream());
+        list1.addToList("Chess", games.stream());
+        List<String> expect = List.of("17 days", "Chess");
+        assertEquals(expect, list1.getGameNames());
+        IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class,
+                () -> list1.removeFromList("3"));
+        assertEquals("Invalid index", exception.getMessage());
+    }
+
+    @Test
+    void removeFromListByName() {
+        IGameList list1 = new GameList();
+        list1.addToList("17 days", games.stream());
+        list1.addToList("Chess", games.stream());
+        List<String> expect = List.of("17 days", "Chess");
+        assertEquals(expect, list1.getGameNames());
+        list1.removeFromList("17 days");
+        List<String> expect2 = List.of("Chess");
+        assertEquals(expect2, list1.getGameNames());
+    }
+
+    @Test
+    void removeFromListByInvalidName() {
+        IGameList list1 = new GameList();
+        list1.addToList("17 days", games.stream());
+        list1.addToList("Chess", games.stream());
+        List<String> expect = List.of("17 days", "Chess");
+        assertEquals(expect, list1.getGameNames());
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> list1.removeFromList("golang"));
+        assertEquals("Game does not exist", exception.getMessage());
+    }
+
+    @Test
+    void removeFromListByRange() {
+        IGameList list1 = new GameList();
+        list1.addToList("all", games.stream());
+        list1.removeFromList("2-7");
+        List<String> expect = List.of("17 days", "Tucano");
+        assertEquals(expect, list1.getGameNames());
+
+        list1.removeFromList("1-1");
+        List<String> expect2 = List.of("Tucano");
+        assertEquals(expect2, list1.getGameNames());
+    }
+
+    @Test
+    void removeFromListByInvalidRange() {
+        IGameList list1 = new GameList();
+        list1.addToList("all", games.stream());
+        IllegalArgumentException exception1 = assertThrows(IllegalArgumentException.class,
+                () -> list1.removeFromList("7-2"));
+        assertEquals("Invalid range of games", exception1.getMessage());
+
+        IllegalArgumentException exception2 = assertThrows(IllegalArgumentException.class,
+                () -> list1.removeFromList("0-9"));
+        assertEquals("Invalid range of games", exception2.getMessage());
+    }
 }
