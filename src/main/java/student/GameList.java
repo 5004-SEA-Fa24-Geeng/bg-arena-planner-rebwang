@@ -41,7 +41,7 @@ public class GameList implements IGameList {
         try {
             Files.write(Path.of(filename), gameNames);
         } catch (IOException e) {
-            throw new RuntimeException("Error writing to file: " + filename, e);
+            throw new RuntimeException("Error writing to file: " + filename + ", Error message: " + e.getMessage());
         }
     }
 
