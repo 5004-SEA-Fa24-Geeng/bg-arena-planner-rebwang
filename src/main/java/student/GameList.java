@@ -3,6 +3,7 @@ package student;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -39,7 +40,7 @@ public class GameList implements IGameList {
         List<String> gameNames = getGameNames();
 
         try {
-            Files.write(Path.of(filename), gameNames);
+            Files.write(Path.of(filename), gameNames, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
             throw new RuntimeException("Error writing to file: " + filename + ", Error message: " + e.getMessage());
         }
