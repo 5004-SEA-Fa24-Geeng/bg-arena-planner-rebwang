@@ -41,7 +41,7 @@ public class GameList implements IGameList {
             List<String> gameNames = getGameNames();
             Files.write(Path.of(filename), gameNames, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
-            throw new RuntimeException("Error writing to file: " + filename + ", Error message: " + e.getMessage());
+            System.err.println("Error writing to file: " + filename + ", Error message: " + e.getMessage());
         }
     }
 
