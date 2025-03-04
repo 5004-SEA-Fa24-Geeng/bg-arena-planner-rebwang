@@ -92,6 +92,7 @@ public class GameList implements IGameList {
             }
             else {
                 throw new IllegalArgumentException("Invalid range of games");
+
             }
         }
     }
@@ -128,7 +129,7 @@ public class GameList implements IGameList {
                 int start = Integer.parseInt(parts[0]) - 1;
                 int end = Integer.parseInt(parts[1]);
                 List<String> listVersionOfGames = getGameNames();
-                if (start < 0 || end >= listVersionOfGames.size() || start > end) {
+                if (start < 0 || end > listVersionOfGames.size() || start >= end) {
                     throw new IllegalArgumentException("Invalid range of games");
                 }
 
