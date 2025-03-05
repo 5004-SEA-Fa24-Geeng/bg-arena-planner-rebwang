@@ -1,8 +1,16 @@
 package student;
 
-public class Filters {
-    private Filters() {}
+public final class Filters {
+    private Filters() { }
 
+    /**
+     * Filters a BoardGame based on the specified column, operation, and value.
+     * @param game the object to be filtered.
+     * @param column the column that determines which attribute of the game to filter.
+     * @param op the specifying the comparison operation to be applied.
+     * @param value the value to compare against the specified column.
+     * @return true if the game satisfies the filter condition, false otherwise.
+     */
     public static boolean filter(BoardGame game, GameData column, Operations op, String value) {
         switch (column) {
             case NAME:
@@ -31,45 +39,55 @@ public class Filters {
     }
 
     /**
-     * gameData -> game name
-     * should be case-insensitive!
+     * Filters a string value based on the specified comparison operation.
+     * @param gameStrData The string data to be compared.
+     * @param op the operations specifying the type of comparison.
+     * @param value the string value to compare against gameData.
+     * @return true if the comparison condition is met, false otherwise.
      */
-    public static boolean filterString(String gameData, Operations op, String value) {
+    public static boolean filterString(String gameStrData, Operations op, String value) {
         switch (op) {
             case EQUALS:
-                return gameData.equalsIgnoreCase(value);
+                return gameStrData.equalsIgnoreCase(value);
             case LESS_THAN:
-                return gameData.compareToIgnoreCase(value) < 0;
+                return gameStrData.compareToIgnoreCase(value) < 0;
             case GREATER_THAN:
-                return gameData.compareToIgnoreCase(value) > 0;
+                return gameStrData.compareToIgnoreCase(value) > 0;
             case LESS_THAN_EQUALS:
-                return gameData.compareToIgnoreCase(value) <= 0;
+                return gameStrData.compareToIgnoreCase(value) <= 0;
             case GREATER_THAN_EQUALS:
-                return gameData.compareToIgnoreCase(value) >= 0;
+                return gameStrData.compareToIgnoreCase(value) >= 0;
             case NOT_EQUALS:
-                return !gameData.equalsIgnoreCase(value);
+                return !gameStrData.equalsIgnoreCase(value);
             case CONTAINS:
-                return gameData.toLowerCase().contains(value.toLowerCase());
+                return gameStrData.toLowerCase().contains(value.toLowerCase());
             default:
                 return true;
         }
     }
 
-    public static boolean filterNum(double gameData, Operations op, String value) {
+    /**
+     * Filters a numeric value based on the specified comparison operation.
+     * @param gameNumData the numeric data to be compared.
+     * @param op the Operations specifying the type of comparison.
+     * @param value the string representation of the numeric value to compare against gameNumData.
+     * @return true if the comparison condition is met, false otherwise.
+     */
+    public static boolean filterNum(double gameNumData, Operations op, String value) {
         double val = Double.parseDouble(value);
         switch (op) {
             case EQUALS:
-                return gameData == val;
+                return gameNumData == val;
             case GREATER_THAN:
-                return gameData > val;
+                return gameNumData > val;
             case LESS_THAN:
-                return gameData < val;
+                return gameNumData < val;
             case GREATER_THAN_EQUALS:
-                return gameData >= val;
+                return gameNumData >= val;
             case LESS_THAN_EQUALS:
-                return gameData <= val;
+                return gameNumData <= val;
             case NOT_EQUALS:
-                return gameData != val;
+                return gameNumData != val;
             default:
                 return true;
         }
