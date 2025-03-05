@@ -19,7 +19,6 @@ public final class Sorts {
      * @return A comparator for sorting BoardGame objects.
      */
     public static Comparator<BoardGame> getSortType(GameData sortOn, boolean asc) {
-        Comparator<BoardGame> comparator = null;
         switch (sortOn) {
             case MAX_PLAYERS:
                 return (o1, o2) -> {
