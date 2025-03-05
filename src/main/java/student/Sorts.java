@@ -2,7 +2,22 @@ package student;
 
 import java.util.Comparator;
 
+/**
+ * The Sorts class provides utility methods to obtain comparators for sorting board games.
+ * This class should not be instantiated.
+ */
 public class Sorts {
+
+    // Private constructor to prevent instantiation
+    private Sorts() { }
+
+    /**
+     * Returns a comparator for sorting BoardGame objects based on the specified attribute.
+     *
+     * @param sortOn The GameData(column) attribute to sort by.
+     * @param asc true for ascending order, false for descending order.
+     * @return A comparator for sorting BoardGame objects.
+     */
     public static Comparator<BoardGame> getSortType(GameData sortOn, boolean asc) {
         Comparator<BoardGame> comparator = null;
         switch (sortOn) {
