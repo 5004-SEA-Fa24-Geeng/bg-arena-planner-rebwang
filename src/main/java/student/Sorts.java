@@ -6,7 +6,7 @@ import java.util.Comparator;
  * The Sorts class provides utility methods to obtain comparators for sorting board games.
  * This class should not be instantiated.
  */
-public class Sorts {
+public final class Sorts {
 
     // Private constructor to prevent instantiation
     private Sorts() { }

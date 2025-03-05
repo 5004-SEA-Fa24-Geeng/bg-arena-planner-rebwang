@@ -9,7 +9,14 @@ import java.util.stream.Stream;
  * provides functionality for filtering and sorting a collection of board games.
  */
 public class Planner implements IPlanner {
+    /**
+     * A set containing all available board games.
+     */
     private Set<BoardGame> games;
+
+    /**
+     * A set containing the filtered board games based on applied criteria.
+     */
     private Set<BoardGame> filteredGames;
 
     /**
@@ -39,7 +46,7 @@ public class Planner implements IPlanner {
      * @param filteredGames Stream<BoardGame> full game list
      * @return Stream<BoardGame> a stream collection of the filtered games.
      */
-    private Stream<BoardGame> filterSingle (String filter, Stream<BoardGame> filteredGames) {
+    private Stream<BoardGame> filterSingle(String filter, Stream<BoardGame> filteredGames) {
         //handle getting operation, game attribute
         Operations operator = Operations.getOperatorFromStr(filter);
         if (operator == null) {

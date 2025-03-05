@@ -14,7 +14,10 @@ import java.util.stream.Stream;
  */
 
 public class GameList implements IGameList {
-
+    /**
+     * A set containing the names of the board games in the list.
+     * This set ensures that the game names are unique and maintains insertion order.
+     */
     private Set<String> listOfGames;
 
     /**
@@ -90,8 +93,7 @@ public class GameList implements IGameList {
 
         String[] parts = str.split("-");
         if (parts.length < 1 || parts.length > 2) {
-            throw new IllegalArgumentException("Invalid format for addToList");
-        }
+            throw new IllegalArgumentException("Invalid format for addToList"); }
         // "all" or an index
         else if (parts.length == 1) {
             // "all"
@@ -108,8 +110,7 @@ public class GameList implements IGameList {
                     }
                     listOfGames.add(filteredList.get(index).getName());
                 } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException("Game does not exist");
-                }
+                    throw new IllegalArgumentException("Game does not exist"); }
             }
         }
         // range format
@@ -122,9 +123,7 @@ public class GameList implements IGameList {
                         .toList());
             }
             else {
-                throw new IllegalArgumentException("Invalid range of games");
-
-            }
+                throw new IllegalArgumentException("Invalid range of games"); }
         }
     }
 
