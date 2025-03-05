@@ -7,16 +7,28 @@ import java.nio.file.StandardOpenOption;
 import java.util.*;
 import java.util.stream.Stream;
 
+/**
+ * The GameList class implements the IGameList interface and
+ * manages a collection of BoardGame. It provides functionality to add,
+ * remove, retrieve, and persist game names.
+ */
+
 public class GameList implements IGameList {
+
     private Set<String> listOfGames;
 
     /**
-     * Constructor for the GameList.
+     * Constructs a new GameList with an empty set of game names.
      */
     public GameList() {
         listOfGames = new LinkedHashSet<>();
     }
 
+    /**
+     * Retrieves a sorted list of game names in case-insensitive order.
+     *
+     * @return A sorted List<String> of game names.
+     */
     @Override
     public List<String> getGameNames() {
         List<String> listVersionOfGames = new ArrayList<>(List.copyOf(listOfGames));
@@ -24,17 +36,29 @@ public class GameList implements IGameList {
         return listVersionOfGames;
     }
 
-
+    /**
+     * Clears all games from the list.
+     */
     @Override
     public void clear() {
         listOfGames.clear();
     }
 
+    /**
+     * Returns the number of games in the list.
+     *
+     * @return The count of games.
+     */
     @Override
     public int count() {
         return listOfGames.size();
     }
 
+    /**
+     * Saves the list of game names to a specified file.
+     *
+     * @param filename The name of the file to save the game names.
+     */
     @Override
     public void saveGame(String filename) {
         try {
@@ -45,6 +69,13 @@ public class GameList implements IGameList {
         }
     }
 
+    /**
+     * Adds a game or a range of games to the list based on the provided string and filtered stream.
+     *
+     * @param str      The game name, index, or range in string format.
+     * @param filtered A stream of BoardGame objects to filter games from.
+     * @throws IllegalArgumentException If the format is invalid or the game does not exist.
+     */
     @Override
     public void addToList(String str, Stream<BoardGame> filtered) throws IllegalArgumentException {
         //listOfGames HashSet, str operation, Stream<BoardGame> filtered
@@ -97,6 +128,12 @@ public class GameList implements IGameList {
         }
     }
 
+    /**
+     * Removes a game or a range of games from the list based on the provided string.
+     *
+     * @param str The game name, index, or range in string format.
+     * @throws IllegalArgumentException If the format is invalid or the game does not exist.
+     */
     @Override
     public void removeFromList(String str) throws IllegalArgumentException {
         // remove all
