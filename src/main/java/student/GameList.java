@@ -93,7 +93,8 @@ public class GameList implements IGameList {
 
         String[] parts = str.split("-");
         if (parts.length < 1 || parts.length > 2) {
-            throw new IllegalArgumentException("Invalid format for addToList"); }
+            throw new IllegalArgumentException("Invalid format for addToList");
+        }
         // "all" or an index
         else if (parts.length == 1) {
             // "all"
@@ -110,8 +111,8 @@ public class GameList implements IGameList {
                     }
                     listOfGames.add(filteredList.get(index).getName());
                 } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException("Game does not exist"); }
-            }
+                    throw new IllegalArgumentException("Game does not exist");
+                }}
         }
         // range format
         else {
@@ -120,10 +121,10 @@ public class GameList implements IGameList {
             if (start >= 0 && end <= filteredList.size() && start <= end) {
                 listOfGames.addAll(filteredList.subList(start, end).stream()
                         .map(BoardGame::getName)
-                        .toList());
-            }
+                        .toList());}
             else {
-                throw new IllegalArgumentException("Invalid range of games"); }
+                throw new IllegalArgumentException("Invalid range of games");
+            }
         }
     }
 
