@@ -16,7 +16,7 @@ public class Filters {
             case MIN_TIME:
                 return filterNum(game.getMinPlayTime(), op, value);
             case MAX_TIME:
-                    return filterNum(game.getMaxPlayTime(), op, value);
+                return filterNum(game.getMaxPlayTime(), op, value);
             case RANK:
                 return filterNum(game.getRank(), op, value);
             case YEAR:

@@ -42,6 +42,27 @@ public class TestPlanner {
     }
 
     @Test
+    public void testFilterNameContains() {
+        IPlanner planner = new Planner(games);
+        List<BoardGame> filtered = planner.filter("name ~= go").toList();
+        assertEquals(4, filtered.size());
+    }
+
+    @Test
+    public void testFilterNameNotEquals() {
+        IPlanner planner = new Planner(games);
+        List<BoardGame> filtered = planner.filter("name != Go Fish").toList();
+        assertEquals(7, filtered.size());
+    }
+
+    @Test
+    public void testFilterNameEquals() {
+        IPlanner planner = new Planner(games);
+        List<BoardGame> filtered = planner.filter("name == Go Fish").toList();
+        assertEquals(1, filtered.size());
+    }
+
+    @Test
     public void testFilterMaxPlayers() {
         IPlanner planner = new Planner(games);
         List<BoardGame> filtered = planner.filter("maxPlayers < 5").toList();

@@ -32,7 +32,7 @@ public class Planner implements IPlanner {
             return filteredGames;
         }
         // remove spaces
-        filter = filter.replaceAll(" ", "");
+//        filter = filter.replaceAll(" ", "");
 
         String[] parts = filter.split(operator.getOperator());
         if (parts.length != 2) {
@@ -40,7 +40,7 @@ public class Planner implements IPlanner {
         }
         GameData column;
         try {
-            column = GameData.fromString(parts[0]);
+            column = GameData.fromString(parts[0].trim());
         } catch (IllegalArgumentException e) {
             return filteredGames;
         }
@@ -52,9 +52,9 @@ public class Planner implements IPlanner {
             return filteredGames;
         }
 
-//        System.out.println("Operator is :" + operator);
-//        System.out.println("Operator is :" + column);
-//        System.out.println("Operator is :" + value);
+        System.out.println("Operator is :" + operator);
+        System.out.println("Operator is :" + column);
+        System.out.println("Operator is :" + value);
 
         // Filters.filter(board game, game data, op, string value)
         // Stream<BoardGames> filteredGames
