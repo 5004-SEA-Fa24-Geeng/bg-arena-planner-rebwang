@@ -119,8 +119,7 @@ public class GameList implements IGameList {
                 listOfGames.addAll(filteredList.subList(start, end).stream()
                         .map(BoardGame::getName)
                         .toList());
-            }
-            else {
+            } else {
                 throw new IllegalArgumentException("Invalid range of games");
             }
         }
