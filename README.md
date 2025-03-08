@@ -5,16 +5,16 @@ Github Account name: rebwang
 
 Link to Assignment on Github: https://github.com/5004-SEA-Fa24-Geeng/bg-arena-planner-rebwang.git
 
-How many hours did it take you to complete this assignment (estimate)?
+How many hours did it take you to complete this assignment (estimate)? 23hr
 
 Did you collaborate with any other students/TAs/Professors? If so, tell us who and in what
 capacity.
 
-* one per row, add more if needed
+* Professor Geeng provides some hints and codes of Filters class.
   
 Did you use any external resources (you do not have to cite in class material)? (Cite them below)
 
-* one row per resource
+* I use a GenAI tool to help generate proper Javadoc and refine the wording of my sentences.
 
 
 (Optional) What was your favorite part of the assignment?

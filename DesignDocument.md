@@ -56,7 +56,7 @@ For the final design, you just need to do a single diagram that includes both th
 > [!WARNING]
 > If you resubmit your assignment for manual grading, this is a section that often needs updating. You should double check with every resubmit to make sure it is up to date.
 
-
+![Final Design](img/bg_arena_final.jpg)
 
 
 
@@ -66,3 +66,5 @@ For the final design, you just need to do a single diagram that includes both th
 > The value of reflective writing has been highly researched and documented within computer science, from learning to information to showing higher salaries in the workplace. For this next part, we encourage you to take time, and truly focus on your retrospective.
 
 Take time to reflect on how your design has changed. Write in *prose* (i.e. do not bullet point your answers - it matters in how our brain processes the information). Make sure to include what were some major changes, and why you made them. What did you learn from this process? What would you do differently next time? What was the most challenging part of this process? For most students, it will be a paragraph or two. 
+
+The biggest difference between the initial and final design is the addition of two new classes—Filters and Sorts—which assist methods in the Planner class. Initially, I was unsure how and where to use the Operations class provided by the instructor. However, I later found it extremely useful for the Filters class, as I frequently utilized its methods.
