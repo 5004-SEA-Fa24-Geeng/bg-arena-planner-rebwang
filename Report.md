@@ -7,7 +7,8 @@ code as it is meant to help you understand some of the concepts.
 
 1. What is the difference between == and .equals in java? Provide a code example of each, where they would return different results for an object. Include the code snippet using the hash marks (```) to create a code block.
    
-In java, == compares the memory address of two objects, while .equals compares the actual content such as attributes of two objects.
+   In java, == compares the memory address of two objects, while .equals compares the actual content such as attributes of two objects.
+   
    ```java
    class Person {
       String name;
@@ -36,7 +37,7 @@ In java, == compares the memory address of two objects, while .equals compares t
 
 2. Logical sorting can be difficult when talking about case. For example, should "apple" come before "Banana" or after? How would you sort a list of strings in a case-insensitive manner?
    
-I would use Comparator with String.CASE_INSENSITIVE_ORDER, or compareToIgnoreCase predefined method to sort a list of Strings in a case-insensitive manner.
+   I would use Comparator with String.CASE_INSENSITIVE_ORDER, or compareToIgnoreCase predefined method to sort a list of Strings in a case-insensitive manner.
 
 
 
@@ -55,25 +56,25 @@ I would use Comparator with String.CASE_INSENSITIVE_ORDER, or compareToIgnoreCas
     ```
     Why would the order in which we checked matter (if it does matter)? Provide examples either way proving your point. 
    
-The order does matter and we should check for the more specific(longer) operator first. For example ">=" and ">", we should check for ">=" first since it captures wider range of items. If we check ">" first, then ">=" would never be executed.
+   The order does matter and we should check for the more specific(longer) operator first. For example ">=" and ">", we should check for ">=" first since it captures wider range of items. If we check ">" first, then ">=" would never be executed.
 
 
 4. What is the difference between a List and a Set in Java? When would you use one over the other? 
    
-List allows duplicates and the elements can be accessed by index, while Set does not allow duplicates. If ordering and duplicates matter, then it's ideal to use List. If uniqueness matters, then it's ideal to use Set.
+   List allows duplicates and the elements can be accessed by index, while Set does not allow duplicates. If ordering and duplicates matter, then it's ideal to use List. If uniqueness matters, then it's ideal to use Set.
 
 
 
 5. In [GamesLoader.java](src/main/java/student/GamesLoader.java), we use a Map to help figure out the columns. What is a map? Why would we use a Map here?
    
-A Map in Java is a collection that stores key-value pairs. Each key maps to exactly one value, and duplicate keys are not allowed. 
-The processHeader method in GamesLoader maps column names to their index positions. Using Map allows quickly look up the column index.
+   A Map in Java is a collection that stores key-value pairs. Each key maps to exactly one value, and duplicate keys are not allowed. 
+   The processHeader method in GamesLoader maps column names to their index positions. Using Map allows quickly look up the column index.
 
 
 
 6. [GameData.java](src/main/java/student/GameData.java) is actually an `enum` with special properties we added to help with column name mappings. What is an `enum` in Java? Why would we use it for this application?
    
-`enum` is a data type used to define a fixed set of named constants. In GameData, each constant is a column name in the CSV file. We use this enum class to avoid hardcode every column String, and it also provides type safety.
+   `enum` is a data type used to define a fixed set of named constants. In GameData, each constant is a column name in the CSV file. We use this enum class to avoid hardcode every column String, and it also provides type safety.
 
    
 
