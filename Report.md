@@ -94,9 +94,7 @@ code as it is meant to help you understand some of the concepts.
     ```java
     // your code here, don't forget the class name that is dropped in the switch block..
    if (ct == CMD_QUESTION || ct == CMD_HELP) {
-   processHelp();
-   } else if (ct == INVALID) {
-   CONSOLE.printf("%s%n", ConsoleText.INVALID);
+      processHelp();
    } else {
    CONSOLE.printf("%s%n", ConsoleText.INVALID);
    }
