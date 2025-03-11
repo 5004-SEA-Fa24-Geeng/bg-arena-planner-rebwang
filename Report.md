@@ -96,7 +96,7 @@ code as it is meant to help you understand some of the concepts.
    if (ct == CMD_QUESTION || ct == CMD_HELP) {
       processHelp();
    } else {
-   CONSOLE.printf("%s%n", ConsoleText.INVALID);
+       CONSOLE.printf("%s%n", ConsoleText.INVALID);
    }
     ```
 
